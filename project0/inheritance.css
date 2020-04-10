@@ -1,0 +1,20 @@
+.success, .warning.error {
+  font-family: sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 15px;
+   }
+
+.success {
+  background-color: green; }
+
+.warning {
+  background-color: orange; }
+
+.error {
+  background-color: #EF5534;
+   }
+
+/*# sourceMappingURL=inheritance.css.map */
