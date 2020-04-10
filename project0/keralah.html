@@ -2,21 +2,15 @@
 <html>
     <head>
       <link rel="stylesheet" href="style.css">
+      <meta charset="UTF-8">
+
       <style>
           body{
-                background-image: url("kerala.jpg");
+                background-image: url("images/kerala.jpg");
                 background-size:cover;
                 background-repeat: no-repeat;
             }
-            th,td,table
-            {
-              font-size: 18px;
-              color:white;
-              font-style: oblique;
-              font-weight: bold;
-              border: 2px solid white;
-              border-collapse: collapse;
-            }
+
             /*The CSS Grouping Selector*/
             p,li
             {
@@ -25,6 +19,29 @@
               font-style: oblique;
               font-weight: bold;
             }
+            .column {
+            float: left;
+            width: 20%;
+            padding: 8px;
+          }
+
+          /* Clearfix (clear floats) */
+          .row::after {
+            content: "";
+            clear: both;
+            display: table;
+            margin:0 5px;
+
+          }
+          img.blah:hover
+          {
+            opacity:0.6;
+            color:dodgerblue;
+
+          }
+
+          div
+
       </style>
     </head>
           <body>
@@ -33,9 +50,40 @@
               <a href="keralah.html">Kerala</a>
               <a href="Delhi">Contact</a>
               <a href="aboutpage.html">About</a>
-              <a href="https://www.google.com/"><img src='google.png' height=18px width=18px/></a>
-
+              <a href="https://www.google.com/"><img src='images/google.png' height=18px width=18px/></a>
+              <a href ="https://www.expedia.co.in/Flights-Search?mode=search&paandi=true&trip=roundtrip&options=cabinclass%3Aeconomy%2Cnopenalty%3AN%2Csortby%3Aprice&passengers=children%3A0%2Cadults%3A1%2Cseniors%3A0%2Cinfantinlap%3AY&leg1=from%3AHyderabad%2C%20India%20(HYD-Rajiv%20Gandhi%20Intl.)%2Cto%3AKerala%2C%20India%2Cdeparture%3A28%2F05%2F2020TANYT&leg2=from%3AKerala%2C%20India%2Cto%3AHyderabad%2C%20India%20(HYD-Rajiv%20Gandhi%20Intl.)%2Cdeparture%3A09%2F06%2F2020TANYT&rfrr=TG.LP.SrchWzd.Flight">Airplanes</a>
+              <a href = "https://www.tourmyindia.com/states/kerala/travel-by-train.html">Trains</a>
+              <a href="">Hotels</a>
             </div>
+
+            <div class="row">
+              <div class="column">
+                <a href="https://www.keralahouseboat.in/">
+                  <img class ="blah" src="images/houseboat.jpg" alt="houseboat" style="width:100%;border: 2px solid white">
+                  <span class=”green-overlay”></span>
+                </a>
+              </div>
+              <div class="column">
+                <a href="https://www.keralatourism.org/destination/ponmudi-h">
+                  <img class ="blah" src="images/tour.jpg" alt="tour" style="width:100;">
+                </a>
+              </div>
+              <div class="column">
+                <a href="https://www.makemytrip.com/holidays-india/munnar-beach-packag">
+                  <img class ="blah" src="images/munnarresort.jpg" alt="resort" style="width:100%;border: 2px solid white;">
+                </a>
+              </div>
+              <div class="column">
+                <a href="https://www.ixigo.com/churches-in-ernakulam-lp-1137295">
+                  <img class ="blah" src="images/churches.jpg" alt="churches" style="width:95%;height:95%;border: 2px solid white;">
+                </a>
+              </div>
+            </div>
+
+
+
+
+
 
             <div id="first">
 
@@ -60,6 +108,8 @@
                 <li>We will return back to Hyderabad by flight on 11/6/2020 at 10 am.</li>
               </ol>
 
+              </div>
 
-          </body>
+
+          </body> -->
 </html>
