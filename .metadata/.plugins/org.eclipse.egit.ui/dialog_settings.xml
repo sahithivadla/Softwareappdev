@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
+		<item key="HORIZONTAL_SASH_FORM_WEIGHT" value="200,200"/>
+		<item key="STAGING_SASH_FORM_WEIGHT" value="200,200"/>
+		<item key="sortItemState" value="false"/>
+	</section>
+	<section name="GitCommitMessageComponent">
+		<list key="C:\Users\Sahithi\Desktop\Softwareappdev\.git">
+			<item value="false"/>
+			<item value="sahithivadla &lt;sahithivadla1@msitprogram.net&gt;"/>
+			<item value="final commit"/>
+			<item value="sahithivadla &lt;sahithivadla1@msitprogram.net&gt;"/>
+			<item value="ecc0d094d9f879d4fe234faadfe8a6656483a48e"/>
+			<item value="0"/>
+			<item value="false"/>
+		</list>
+	</section>
+</section>
