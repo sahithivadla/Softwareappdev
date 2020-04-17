@@ -1,24 +1,14 @@
 import os
-
-from flask import Flask, session,request,render_template,flash,logging
+import datetime
+from flask import Flask, session,request,render_template,flash,logging,redirect,url_for
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
+from flask_sqlalchemy import SQLAlchemy
+from  models import *
+from create import app
+from sqlalchemy.sql import exists
 
-app = Flask(__name__)
-
-# Check for environment variable
-if not os.getenv("DATABASE_URL"):
-    raise RuntimeError("DATABASE_URL is not set")
-
-# Configure session to use filesystem
-app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
-
-# Set up database
-engine = create_engine(os.getenv("DATABASE_URL"))
-db = scoped_session(sessionmaker(bind=engine))
 
 
 @app.route("/register.html", methods=["GET", "POST"])
@@ -28,24 +18,52 @@ def register():
         name = request.form['name']
         mail = request.form['mail']
         passw = request.form['passw']
-        gender = request.form.get('gender')
+        gender = request.form['optradio']
+        count = user.query.filter_by(email=mail)
 
-        # print(passw)
-        # register = user(username = uname, email = mail, password = passw)
-        # return redirect(url_for("login"),mail)
-        if(len(passw)<8):
-            app.logger.info('%s password is less than 8 chars',name)
-            msg="The length of password should be greater than 8"
+        try:
+            msg = name+" "+"account created successfully"
+            register = user(username = name, email = mail, password = passw,gender=gender)
+            db.session.add(register)
+            db.session.commit()
             return render_template("register.html",name=msg)
-        elif(not name.isalpha()):
-            app.logger.info('the name has numbers in it')
-            msg = "The name has numbers in it!!"
-            return render_template("register.html",name=msg)
-        else:
-            app.logger.info('%s logged in successfully',name)
-            app.logger.info(mail)
-            app.logger.info(gender)
-            msg = name+"account created successfully"
-            return render_template("register.html",name=msg)
+
+
+        except:
+            error="You already registered with this email id"
+            return render_template("register.html",name=error)
+
 
     return render_template("register.html")
+
+
+# @app.route("/login.html", methods=["GET", "POST"])
+# def login():
+#     msg=None
+#     if request.method == "POST":
+#         mail = request.form['mail']
+#         passw = request.form['passw']
+#         count = user.query(user.password).filter_by(email=mail)
+
+#         try:
+#             if db.String(passw)==user.password:
+#                 msg = "You have logged inthe account successfully"
+#                 return render_template("url_for(login.html)",blah=msg)
+#             else:
+#                 msg = "Incorrect Password"
+#                 return render_template("login.html",blah=msg)
+#         except:
+#             error="This email doesnt exist!! Please register yourself first"
+#             return render_template("register.html",msg=error)
+
+#     return render_template("login.html")
+
+@app.route("/admin.html", methods=["GET"])
+def admin():
+    pichilist = user.query.with_entities(user.email, user.password,user.created).order_by(user.created).all()
+    print(pichilist)
+    return render_template("admin.html",
+                            users = pichilist)
+
+
+

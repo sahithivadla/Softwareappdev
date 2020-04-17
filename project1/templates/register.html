@@ -33,6 +33,10 @@
     {
         background-color: red;
     }
+    p
+    {
+       color: red;
+    }
 </style>
 </head>
 <body>
@@ -40,13 +44,10 @@
     {% if "account created successfully" in name %}
         <div class="success">{{name}}</div>
     {% endif %}
-    {% if name=="The length of password should be greater than 8" %}
+
+    {% if "This email doesnt exist!! Please register yourself first" in name %}
         <div class="error">{{name}}</div>
     {% endif %}
-    {% if name=="The name has numbers in it!!" %}
-    <div class="error">{{name}}</div>
-    {% endif %}
-
 
 
     <div class="container" >
@@ -61,15 +62,22 @@
                       <label for="email">Email : </label>
                       <input type="email" required name="mail" class="form-control" id="mail">
                     </div>
+                    {% if name=="You already registered with this email id" %}
+                        <p>{{name}}</p>
+                    {% endif %}
+
                     <div class="form-group">
                       <label for="email">Password : </label>
                       <input type="password" required name="passw" class="form-control" id="passw">
                     </div>
+                    {% if name=="The length of password should be greater than 8" %}
+                        <p>{{name}}</p>
+                    {% endif %}
                     <div>
                         <label for="gender">Gender: &nbsp;&nbsp;</label>
-                        <label class="radio-inline"><input type="radio" name="optradio" checked>Male</label>
-                        <label class="radio-inline"><input type="radio" name="optradio">Female</label>
-                        <label class="radio-inline"><input type="radio" name="optradio">Other</label>
+                        <label class="radio-inline"><input type="radio"   name="optradio" value="Male">Male</label>
+                        <label class="radio-inline"><input type="radio" name="optradio"  value="Female">Female</label>
+                        <label class="radio-inline"><input type="radio" name="optradio" value="Others">Other</label>
                     </div>
 
                      <br>
