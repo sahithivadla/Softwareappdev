@@ -49,6 +49,12 @@
         <div class="error">{{name}}</div>
     {% endif %}
 
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {{messages}}
+        {% endif %}
+    {% endwith %}
+
 
     <div class="container" >
         <div class="row" style="margin-top: 40px">

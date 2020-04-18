@@ -20,3 +20,16 @@ class user(db.Model):
 
     def __repr__(self):
         return self.password
+
+
+class Books(db.Model):
+    ISBN = db.Column(db.Integer,index=False,unique=True,nullable=False,primary_key=True)
+    title = db.Column(db.String(80),index=False,unique=True,nullable=False)
+    author = db.Column(db.String(30),index=False,unique=False,nullable=False)
+    year =db.Column(db.Integer,index=False,unique=False,nullable=False)
+
+    def __init__(self, ISBN, title,author,year):
+        self.ISBN = ISBN
+        self.title = title
+        self.author=author
+        self.year = year
