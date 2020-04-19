@@ -22,14 +22,18 @@ class user(db.Model):
         return self.password
 
 
-class Books(db.Model):
-    ISBN = db.Column(db.Integer,index=False,unique=True,nullable=False,primary_key=True)
-    title = db.Column(db.String(80),index=False,unique=True,nullable=False)
-    author = db.Column(db.String(30),index=False,unique=False,nullable=False)
-    year =db.Column(db.Integer,index=False,unique=False,nullable=False)
+class Book(db.Model):
+    isbn = db.Column(db.String ,primary_key=True)
+    title = db.Column(db.String,unique=True,nullable=False)
+    author = db.Column(db.String,nullable=False)
+    year = db.Column(db.Integer,nullable=False)
 
-    def __init__(self, ISBN, title,author,year):
-        self.ISBN = ISBN
+    def __init__(self, isbn, title,author,year):
+        self.isbn = isbn
         self.title = title
         self.author=author
-        self.year = year
+        self.year=year
+
+
+
+
